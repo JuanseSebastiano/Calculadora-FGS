@@ -944,7 +944,8 @@
 
     // 7. GANANCIA NETA
     const gainNet = priceClient - costReal;
-    const gainPct = costReal > 0 ? Math.round(gainNet / costReal * 100) : 0;
+    // Margen sobre precio (cuánto de cada $100 cobrado es ganancia) — más útil que markup sobre costo
+    const gainPct = priceClient > 0 ? Math.round(gainNet / priceClient * 100) : 0;
 
     // ---- RENDER ----
     const baseVal = document.getElementById('base').value || '—';
@@ -1018,7 +1019,7 @@
     document.getElementById('out-price').textContent = fmt(priceClient);
     document.getElementById('out-gain').textContent  = fmt(gainNet);
     document.getElementById('out-margin-info').textContent = `tarifa $${tarifaKm.toLocaleString('es-AR')}/km`;
-    document.getElementById('out-gain-sub').textContent = `${gainPct}% sobre costos operativos`;
+    document.getElementById('out-gain-sub').textContent = `${gainPct}% margen sobre precio cobrado`;
 
     // Mostrar panel
     const panel = document.getElementById('results-panel');
