@@ -881,9 +881,9 @@
   // kmLeg3   = DESTINO → BASE   (regreso, se cobra)
   // kmNafta  = km totales para nafta (ida + vuelta a casa, SOLO para costo interno)
   //
-  // PRECIO AL CLIENTE = km_cobrados × tarifaKm + recargos + peajes + espera
   // MIS COSTOS        = costoFijo + (kmNafta × consumL100/100) × precioLitro
-  // GANANCIA          = precio - costos
+  // PRECIO AL CLIENTE = costos × 2.5 (= costo + 150% ganancia) + recargos + peajes + espera
+  // GANANCIA          = precio - costos  (≥150% sobre costo real)
   function runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr) {
     const kmBilled = kmLeg1 + kmLeg2 + kmLeg3; // km que se cobran al cliente
 
@@ -910,22 +910,29 @@
     const kmNaftaRaw = parseFloat(document.getElementById('manual-km-nafta').value);
     const kmNafta    = (!isNaN(kmNaftaRaw) && kmNaftaRaw > 0) ? kmNaftaRaw : kmBilled;
 
-    // 1. PRECIO BASE (km cobrados × tarifa)
-    const priceBase = kmBilled * tarifaKm;
+    // 1. MIS COSTOS INTERNOS (calculados primero para derivar el precio)
+    const litersNafta = (kmNafta * consumL100) / 100;
+    const costNafta   = litersNafta * fuelPrice;
+    const costReal    = costoFijo + costNafta;
 
-    // 2. RECARGOS (sobre precio base)
+    // 2. PRECIO DE SERVICIO = costo real + 150% de ganancia (2.5× el costo)
+    const TARGET_GAIN_PCT = 150;
+    const priceService    = costReal * (1 + TARGET_GAIN_PCT / 100);
+    const tarifaEfectiva  = kmBilled > 0 ? priceService / kmBilled : 0;
+
+    // 3. RECARGOS (sobre precio de servicio)
     const nightOn   = document.getElementById('chk-night').checked;
     const sundayOn  = document.getElementById('chk-sunday').checked;
     const holidayOn = document.getElementById('chk-holiday').checked;
-    let surchargeNight   = nightOn   ? priceBase * (nightPct   / 100) : 0;
-    let surchargeSunday  = sundayOn  ? priceBase * (sundayPct  / 100) : 0;
-    let surchargeHoliday = holidayOn ? priceBase * (holidayPct / 100) : 0;
+    let surchargeNight   = nightOn   ? priceService * (nightPct   / 100) : 0;
+    let surchargeSunday  = sundayOn  ? priceService * (sundayPct  / 100) : 0;
+    let surchargeHoliday = holidayOn ? priceService * (holidayPct / 100) : 0;
 
-    // 3. PEAJES (pass-through: cliente los paga, no es ganancia ni costo nuestro)
+    // 4. PEAJES (pass-through: cliente los paga, no es ganancia ni costo nuestro)
     const tollsRaw  = document.getElementById('tolls').value;
     const costTolls = (tollsRaw === '' || isNaN(parseFloat(tollsRaw))) ? 0 : parseFloat(tollsRaw);
 
-    // 4. TIEMPO DE ESPERA
+    // 5. TIEMPO DE ESPERA
     let costWait = 0;
     if (document.getElementById('chk-wait').checked) {
       const waitMin     = getNum('wait-minutes', 0);
@@ -933,19 +940,13 @@
       costWait = (billableMin / 60) * waitRateHr;
     }
 
-    // 5. TOTAL AL CLIENTE
-    const priceClient = priceBase + surchargeNight + surchargeSunday + surchargeHoliday + costTolls + costWait;
-
-    // 6. MIS COSTOS INTERNOS (costo fijo + nafta dinámica: litros × precio/litro)
-    const litersNafta = (kmNafta * consumL100) / 100;
-    const costNafta   = litersNafta * fuelPrice;
-    const costReal    = costoFijo + costNafta;
+    // 6. TOTAL AL CLIENTE
+    const priceClient = priceService + surchargeNight + surchargeSunday + surchargeHoliday + costTolls + costWait;
     // Nota: peajes son pass-through, no entran en "mis costos"
 
-    // 7. GANANCIA NETA
+    // 7. GANANCIA NETA (siempre ≥150% sobre costo real base, más recargos y espera)
     const gainNet = priceClient - costReal;
-    // Margen sobre precio (cuánto de cada $100 cobrado es ganancia) — más útil que markup sobre costo
-    const gainPct = priceClient > 0 ? Math.round(gainNet / priceClient * 100) : 0;
+    const gainPct = costReal > 0 ? Math.round(gainNet / costReal * 100) : 0;
 
     // ---- RENDER ----
     const baseVal = document.getElementById('base').value || '—';
@@ -969,7 +970,7 @@
     const rowLeg1 = document.getElementById('row-leg1');
     if (kmLeg1 > 0) {
       document.getElementById('out-leg1-cost').textContent =
-        fmt(kmLeg1 * tarifaKm) + ` (${kmLeg1.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
+        fmt(kmLeg1 * tarifaEfectiva) + ` (${kmLeg1.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
       rowLeg1.style.display = 'flex';
     } else {
       rowLeg1.style.display = 'none';
@@ -977,13 +978,13 @@
 
     // Leg2: Origen→Destino (precio km × tarifa)
     document.getElementById('out-leg2-cost').textContent =
-      fmt(kmLeg2 * tarifaKm) + ` (${kmLeg2.toLocaleString('es-AR',{maximumFractionDigits:1})} km × $${tarifaKm.toLocaleString('es-AR')}/km)`;
+      fmt(kmLeg2 * tarifaEfectiva) + ` (${kmLeg2.toLocaleString('es-AR',{maximumFractionDigits:1})} km × $${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
 
     // Leg3: Destino→Base
     const rowReturn = document.getElementById('row-return-base');
     if (kmLeg3 > 0) {
       document.getElementById('out-return-base-cost').textContent =
-        fmt(kmLeg3 * tarifaKm) + ` (${kmLeg3.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
+        fmt(kmLeg3 * tarifaEfectiva) + ` (${kmLeg3.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
       rowReturn.style.display = 'flex';
     } else {
       rowReturn.style.display = 'none';
@@ -1018,8 +1019,8 @@
     // Totales
     document.getElementById('out-price').textContent = fmt(priceClient);
     document.getElementById('out-gain').textContent  = fmt(gainNet);
-    document.getElementById('out-margin-info').textContent = `tarifa $${tarifaKm.toLocaleString('es-AR')}/km`;
-    document.getElementById('out-gain-sub').textContent = `${gainPct}% margen sobre precio cobrado`;
+    document.getElementById('out-margin-info').textContent = `costo + 150% ganancia ($${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
+    document.getElementById('out-gain-sub').textContent = `${gainPct}% sobre costo real`;
 
     // Mostrar panel
     const panel = document.getElementById('results-panel');
