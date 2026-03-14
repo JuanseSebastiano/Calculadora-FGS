@@ -579,8 +579,8 @@
       </div>
       <div class="field">
         <label>⛽ KM totales para nafta <span style="opacity:0.6;font-weight:400">(ida + vuelta a casa)</span></label>
-        <input type="number" id="manual-km-nafta" placeholder="Ej: 56 (por defecto: km × 2)" min="0" step="0.5" />
-        <p class="field-hint">Incluye el regreso a tu base. Si lo dejás vacío se usa el doble del KM cobrado como estimación.</p>
+        <input type="number" id="manual-km-nafta" placeholder="Ej: 56 (por defecto: igual a km cobrados)" min="0" step="0.5" />
+        <p class="field-hint">Si lo dejás vacío se usan los mismos km cobrados (ya incluyen la vuelta a base).</p>
       </div>
       <div class="field">
         <label>Tiempo estimado (manual)</label>
@@ -826,6 +826,9 @@
   let googleMapsLoaded = false;
   let autocompleteOrigin, autocompleteDestination;
 
+  // Coordenadas capturadas del autocomplete (más precisas que geocodificar texto)
+  let placeBase = null, placeOrigin = null, placeDest = null;
+
   // ============================================================
   //  UTILS
   // ============================================================
@@ -902,9 +905,10 @@
       default:        consumL100 = DEFAULTS.consumMixed;
     }
 
-    // KM para nafta: usa campo manual o por defecto km_cobrados × 2 (estimación vuelta)
+    // KM para nafta: usa campo manual o por defecto = kmBilled
+    // (kmBilled ya incluye el regreso a base como leg3, no hay que multiplicar por 2)
     const kmNaftaRaw = parseFloat(document.getElementById('manual-km-nafta').value);
-    const kmNafta    = (!isNaN(kmNaftaRaw) && kmNaftaRaw > 0) ? kmNaftaRaw : kmBilled * 2;
+    const kmNafta    = (!isNaN(kmNaftaRaw) && kmNaftaRaw > 0) ? kmNaftaRaw : kmBilled;
 
     // 1. PRECIO BASE (km cobrados × tarifa)
     const priceBase = kmBilled * tarifaKm;
@@ -1060,49 +1064,66 @@
 
     const service = new google.maps.DistanceMatrixService();
 
+    // Usar coordenadas exactas del autocomplete si están disponibles,
+    // o texto como fallback (Maps lo geocodifica con region=AR)
+    const locBase   = placeBase   || base;
+    const locOrigin = placeOrigin || origin;
+    const locDest   = placeDest   || dest;
+
+    const matrixOptions = {
+      travelMode: google.maps.TravelMode.DRIVING,
+      language:   'es',
+      unitSystem: google.maps.UnitSystem.METRIC,
+      region:     'ar',  // fuerza geocodificación en Argentina para texto libre
+    };
+
     // 3 TRAMOS: Base→Origen + Origen→Destino + Destino→Base
     // Todo se cobra al cliente
     if (base) {
-      // Una sola llamada con 3 orígenes y 3 destinos para cubrir los 3 tramos
-      service.getDistanceMatrix({
-        origins:      [base,   origin, dest],
-        destinations: [origin, dest,   base],
-        travelMode:   google.maps.TravelMode.DRIVING,
-        language:     'es',
-        unitSystem:   google.maps.UnitSystem.METRIC,
-      }, (response, status) => {
-        setLoading(false);
-        if (status !== 'OK') { showError('Error Google Maps: ' + status); return; }
+      // Tres llamadas independientes para evitar ambigüedades en la matriz diagonal
+      let results = {};
+      let pending = 3;
 
-        const elLeg1 = response.rows[0].elements[0]; // Base   → Origen
-        const elLeg2 = response.rows[1].elements[1]; // Origen → Destino
-        const elLeg3 = response.rows[2].elements[2]; // Destino → Base
-
-        if (elLeg1.status !== 'OK' || elLeg2.status !== 'OK') {
-          showError('No se pudo calcular algún tramo. Verificá las direcciones.');
-          return;
+      function onLegResult(key, el) {
+        results[key] = el;
+        pending--;
+        if (pending === 0) {
+          setLoading(false);
+          if (!results.leg1 || results.leg1.status !== 'OK') { showError('No se pudo calcular tramo Base→Origen. Verificá las direcciones.'); return; }
+          if (!results.leg2 || results.leg2.status !== 'OK') { showError('No se pudo calcular tramo Origen→Destino. Verificá las direcciones.'); return; }
+          const kmLeg1 = results.leg1.distance.value / 1000;
+          const kmLeg2 = results.leg2.distance.value / 1000;
+          const kmLeg3 = (results.leg3 && results.leg3.status === 'OK') ? results.leg3.distance.value / 1000 : 0;
+          const timeStr = results.leg2.duration.text;
+          runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr);
         }
+      }
 
-        const kmLeg1   = elLeg1.distance.value / 1000; // Base → Origen
-        const kmLeg2   = elLeg2.distance.value / 1000; // Origen → Destino
-        const kmLeg3   = elLeg3.status === 'OK' ? elLeg3.distance.value / 1000 : 0; // Destino → Base
-        const timeStr  = elLeg2.duration.text; // Tiempo del tramo del pasajero
-
-        runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr);
+      // Tramo 1: Base → Origen
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locBase], destinations: [locOrigin] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Base→Origen): ' + s); return; }
+        onLegResult('leg1', r.rows[0].elements[0]);
       });
+
+      // Tramo 2: Origen → Destino
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Origen→Destino): ' + s); return; }
+        onLegResult('leg2', r.rows[0].elements[0]);
+      });
+
+      // Tramo 3: Destino → Base
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locDest], destinations: [locBase] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Destino→Base): ' + s); return; }
+        onLegResult('leg3', r.rows[0].elements[0]);
+      });
+
     } else {
-      // Sin base — solo Origen→Destino (sin vuelta)
-      service.getDistanceMatrix({
-        origins:      [origin],
-        destinations: [dest],
-        travelMode:   google.maps.TravelMode.DRIVING,
-        language:     'es',
-        unitSystem:   google.maps.UnitSystem.METRIC,
-      }, (response, status) => {
+      // Sin base — solo Origen→Destino
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
         setLoading(false);
-        if (status !== 'OK') { showError('Error Google Maps: ' + status); return; }
-        const el = response.rows[0].elements[0];
-        if (el.status !== 'OK') { showError('No se pudo calcular la ruta.'); return; }
+        if (s !== 'OK') { showError('Error Google Maps: ' + s); return; }
+        const el = r.rows[0].elements[0];
+        if (el.status !== 'OK') { showError('No se pudo calcular la ruta. Verificá las direcciones.'); return; }
         runCalc(0, el.distance.value / 1000, 0, el.duration.text);
       });
     }
@@ -1122,31 +1143,46 @@
     });
 
     try {
-      // Usar solo DistanceMatrixService (no requiere Places API habilitada)
-      // Autocomplete es opcional — si falla, los campos igual funcionan como texto libre
+      // Autocomplete con geometry para capturar lat/lng exactas
       if (google.maps.places && google.maps.places.Autocomplete) {
-        const opts = { componentRestrictions: { country: 'ar' }, fields: ['formatted_address'] };
+        const opts = {
+          componentRestrictions: { country: 'ar' },
+          fields: ['formatted_address', 'geometry', 'name']
+        };
 
         const acBase = new google.maps.places.Autocomplete(document.getElementById('base'), opts);
-        autocompleteOrigin = new google.maps.places.Autocomplete(document.getElementById('origin'), opts);
+        autocompleteOrigin      = new google.maps.places.Autocomplete(document.getElementById('origin'), opts);
         autocompleteDestination = new google.maps.places.Autocomplete(document.getElementById('destination'), opts);
 
         acBase.addListener('place_changed', () => {
           const p = acBase.getPlace();
-          if (p && p.formatted_address) document.getElementById('base').value = p.formatted_address;
+          if (p && p.geometry) {
+            placeBase = p.geometry.location;
+            if (p.formatted_address) document.getElementById('base').value = p.formatted_address;
+          }
         });
         autocompleteOrigin.addListener('place_changed', () => {
           const p = autocompleteOrigin.getPlace();
-          if (p && p.formatted_address) document.getElementById('origin').value = p.formatted_address;
+          if (p && p.geometry) {
+            placeOrigin = p.geometry.location;
+            if (p.formatted_address) document.getElementById('origin').value = p.formatted_address;
+          }
         });
         autocompleteDestination.addListener('place_changed', () => {
           const p = autocompleteDestination.getPlace();
-          if (p && p.formatted_address) document.getElementById('destination').value = p.formatted_address;
+          if (p && p.geometry) {
+            placeDest = p.geometry.location;
+            if (p.formatted_address) document.getElementById('destination').value = p.formatted_address;
+          }
         });
+
+        // Limpiar coordenadas si el usuario edita manualmente el campo
+        document.getElementById('base').addEventListener('input',        () => { placeBase   = null; });
+        document.getElementById('origin').addEventListener('input',      () => { placeOrigin = null; });
+        document.getElementById('destination').addEventListener('input', () => { placeDest   = null; });
       }
     } catch(e) {
       console.warn('Places Autocomplete no disponible (se usará texto libre):', e);
-      // No es crítico — Distance Matrix funciona con texto libre igual
     }
   }
 
@@ -1188,4 +1224,3 @@
 
 </body>
 </html>
-
