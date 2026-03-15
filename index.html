@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,1207 +7,1222 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --bg:        #0b0e13;
-    --surface:   #13181f;
-    --card:      #1a2130;
-    --border:    #ffffff0f;
-    --accent:    #f0b429;
-    --accent2:   #e07b39;
-    --green:     #34d399;
-    --red:       #f87171;
-    --muted:     #6b7a99;
-    --text:      #e8edf5;
-    --text-dim:  #a0aec0;
-    --radius:    14px;
-    --radius-sm: 8px;
-  }
+  :root {
+    --bg:        #0b0e13;
+    --surface:   #13181f;
+    --card:      #1a2130;
+    --border:    #ffffff0f;
+    --accent:    #f0b429;
+    --accent2:   #e07b39;
+    --green:     #34d399;
+    --red:       #f87171;
+    --muted:     #6b7a99;
+    --text:      #e8edf5;
+    --text-dim:  #a0aec0;
+    --radius:    14px;
+    --radius-sm: 8px;
+  }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-  /* BG decorations */
-  body::before {
-    content: '';
-    position: fixed; top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, #f0b42912 0%, transparent 70%);
-    pointer-events: none; z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed; bottom: -150px; left: -150px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, #e07b3908 0%, transparent 70%);
-    pointer-events: none; z-index: 0;
-  }
+  /* BG decorations */
+  body::before {
+    content: '';
+    position: fixed; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #f0b42912 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -150px; left: -150px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #e07b3908 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
 
-  .app-wrap {
-    position: relative; z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 20px 60px;
-  }
+  .app-wrap {
+    position: relative; z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
 
-  /* HEADER */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap; gap: 16px;
-  }
-  .logo-group { display: flex; align-items: center; gap: 14px; }
-  .logo-icon {
-    width: 46px; height: 46px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-  }
-  .logo-text h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.3rem; font-weight: 800;
-    color: var(--text); letter-spacing: -0.3px;
-  }
-  .logo-text span {
-    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .header-badge {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 0.75rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-  .header-badge strong { color: var(--accent); }
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 16px;
+  }
+  .logo-group { display: flex; align-items: center; gap: 14px; }
+  .logo-icon {
+    width: 46px; height: 46px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .logo-text h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem; font-weight: 800;
+    color: var(--text); letter-spacing: -0.3px;
+  }
+  .logo-text span {
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .header-badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .header-badge strong { color: var(--accent); }
 
-  /* GRID LAYOUT */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: start;
-  }
-  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+  /* GRID LAYOUT */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
-  /* CARDS */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    animation: fadeUp 0.5s ease both;
-  }
-  .card:nth-child(2) { animation-delay: 0.1s; }
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    animation: fadeUp 0.5s ease both;
+  }
+  .card:nth-child(2) { animation-delay: 0.1s; }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-  .card-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 22px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .card-header-icon {
-    width: 32px; height: 32px;
-    background: #f0b42918;
-    border: 1px solid #f0b42930;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px;
-  }
-  .card-header h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.95rem; font-weight: 700;
-    color: var(--text); letter-spacing: -0.2px;
-  }
-  .card-header p { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
+  .card-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-header-icon {
+    width: 32px; height: 32px;
+    background: #f0b42918;
+    border: 1px solid #f0b42930;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+  }
+  .card-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--text); letter-spacing: -0.2px;
+  }
+  .card-header p { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
 
-  /* SECTION LABEL */
-  .section-label {
-    font-size: 0.67rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-    margin-top: 18px;
-  }
-  .section-label:first-of-type { margin-top: 0; }
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    margin-top: 18px;
+  }
+  .section-label:first-of-type { margin-top: 0; }
 
-  /* FORM FIELDS */
-  .field { margin-bottom: 14px; }
-  .field label {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-  .field input, .field select {
-    width: 100%;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-  .field input:focus, .field select:focus {
-    border-color: #f0b42950;
-    box-shadow: 0 0 0 3px #f0b42912;
-  }
-  .field input::placeholder { color: var(--muted); }
-  .field select { cursor: pointer; }
-  .field select option { background: var(--card); }
+  /* FORM FIELDS */
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .field input, .field select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .field input:focus, .field select:focus {
+    border-color: #f0b42950;
+    box-shadow: 0 0 0 3px #f0b42912;
+  }
+  .field input::placeholder { color: var(--muted); }
+  .field select { cursor: pointer; }
+  .field select option { background: var(--card); }
 
-  /* Route type selector */
-  .route-selector {
-    display: flex; gap: 8px;
-    margin-bottom: 14px;
-  }
-  .route-btn {
-    flex: 1;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--surface);
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .route-btn.active {
-    border-color: var(--accent);
-    background: #f0b42915;
-    color: var(--accent);
-  }
-  .route-btn:hover:not(.active) { border-color: #ffffff20; color: var(--text-dim); }
+  /* Route type selector */
+  .route-selector {
+    display: flex; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .route-btn {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .route-btn.active {
+    border-color: var(--accent);
+    background: #f0b42915;
+    color: var(--accent);
+  }
+  .route-btn:hover:not(.active) { border-color: #ffffff20; color: var(--text-dim); }
 
-  /* CHECKBOXES */
-  .extras-grid { display: flex; flex-direction: column; gap: 10px; }
-  .check-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 12px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    user-select: none;
-  }
-  .check-item.is-checked {
-    border-color: #f0b42935;
-    background: #f0b42908;
-  }
-  .check-item input[type="checkbox"] {
-    width: 16px; height: 16px;
-    accent-color: var(--accent);
-    cursor: pointer;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .check-item .check-info { flex: 1; }
-  .check-item .check-title {
-    font-size: 0.83rem; font-weight: 500; color: var(--text);
-  }
-  .check-item .check-sub { font-size: 0.74rem; color: var(--muted); margin-top: 1px; }
+  /* CHECKBOXES */
+  .extras-grid { display: flex; flex-direction: column; gap: 10px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .check-item.is-checked {
+    border-color: #f0b42935;
+    background: #f0b42908;
+  }
+  .check-item input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-item .check-info { flex: 1; }
+  .check-item .check-title {
+    font-size: 0.83rem; font-weight: 500; color: var(--text);
+  }
+  .check-item .check-sub { font-size: 0.74rem; color: var(--muted); margin-top: 1px; }
 
-  /* Sub-inputs inside check-items */
-  .check-sub-input {
-    margin-top: 10px;
-    display: none;
-  }
-  .check-sub-input label { font-size: 0.76rem; color: var(--text-dim); margin-bottom: 5px; display: block; }
-  .check-sub-input input {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid #ffffff15;
-    border-radius: 6px;
-    padding: 8px 12px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    outline: none;
-  }
-  .check-sub-input input:focus { border-color: #f0b42940; }
+  /* Sub-inputs inside check-items */
+  .check-sub-input {
+    margin-top: 10px;
+    display: none;
+  }
+  .check-sub-input label { font-size: 0.76rem; color: var(--text-dim); margin-bottom: 5px; display: block; }
+  .check-sub-input input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid #ffffff15;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+  }
+  .check-sub-input input:focus { border-color: #f0b42940; }
 
-  /* CALCULATE BTN */
-  .btn-calc {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
-    border-radius: var(--radius-sm);
-    color: #0b0e13;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px #f0b42922;
-  }
-  .btn-calc:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 28px #f0b42935; }
-  .btn-calc:active { transform: translateY(0); }
-  .btn-calc:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  /* CALCULATE BTN */
+  .btn-calc {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none;
+    border-radius: var(--radius-sm);
+    color: #0b0e13;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px #f0b42922;
+  }
+  .btn-calc:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 28px #f0b42935; }
+  .btn-calc:active { transform: translateY(0); }
+  .btn-calc:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-  /* LOADING */
-  .loading-bar {
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 2px;
-    margin-top: 12px;
-    display: none;
-    animation: loadPulse 1.2s ease-in-out infinite;
-  }
-  @keyframes loadPulse {
-    0%, 100% { opacity: 0.4; } 50% { opacity: 1; }
-  }
+  /* LOADING */
+  .loading-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    margin-top: 12px;
+    display: none;
+    animation: loadPulse 1.2s ease-in-out infinite;
+  }
+  @keyframes loadPulse {
+    0%, 100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
 
-  /* RESULTS PANEL */
-  .results-panel {
-    display: none;
-    grid-column: 1 / -1;
-    animation: fadeUp 0.4s ease both;
-  }
-  @media (max-width: 768px) {
-    .results-panel { grid-column: 1; }
-  }
-  .results-panel.visible { display: block; }
+  /* RESULTS PANEL */
+  .results-panel {
+    display: none;
+    grid-column: 1 / -1;
+    animation: fadeUp 0.4s ease both;
+  }
+  @media (max-width: 768px) {
+    .results-panel { grid-column: 1; }
+  }
+  .results-panel.visible { display: block; }
 
-  /* ROUTE INFO ROW — defined at bottom of CSS */
+  /* ROUTE INFO ROW — defined at bottom of CSS */
 
-  .route-stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    text-align: center;
-  }
-  .route-stat .rs-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 5px; }
-  .route-stat .rs-value { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text); }
-  .route-stat .rs-unit { font-size: 0.75rem; color: var(--muted); margin-left: 3px; }
+  .route-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .route-stat .rs-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 5px; }
+  .route-stat .rs-value { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text); }
+  .route-stat .rs-unit { font-size: 0.75rem; color: var(--muted); margin-left: 3px; }
 
-  /* BREAKDOWN TABLE */
-  .breakdown {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-  .breakdown-title {
-    padding: 12px 16px;
-    background: #ffffff05;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    font-weight: 600;
-  }
-  .brow {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 11px 16px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-  .brow:last-child { border-bottom: none; }
-  .brow:hover { background: #ffffff04; }
-  .brow-label { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
-  .brow-label .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--muted); flex-shrink: 0;
-  }
-  .dot-fuel { background: #60a5fa !important; }
-  .dot-amort { background: #a78bfa !important; }
-  .dot-extra { background: var(--accent) !important; }
-  .dot-total { background: var(--accent2) !important; }
-  .brow-val { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--text); }
-  .brow-val.neg { color: var(--red); }
+  /* BREAKDOWN TABLE */
+  .breakdown {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .breakdown-title {
+    padding: 12px 16px;
+    background: #ffffff05;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .brow {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .brow:last-child { border-bottom: none; }
+  .brow:hover { background: #ffffff04; }
+  .brow-label { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+  .brow-label .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--muted); flex-shrink: 0;
+  }
+  .dot-fuel { background: #60a5fa !important; }
+  .dot-amort { background: #a78bfa !important; }
+  .dot-extra { background: var(--accent) !important; }
+  .dot-total { background: var(--accent2) !important; }
+  .brow-val { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 600; color: var(--text); }
+  .brow-val.neg { color: var(--red); }
 
-  /* TOTALS ROW */
-  .totals-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  @media (max-width: 500px) { .totals-row { grid-template-columns: 1fr; } }
+  /* TOTALS ROW */
+  .totals-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 500px) { .totals-row { grid-template-columns: 1fr; } }
 
-  .total-card {
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    text-align: center;
-  }
-  .total-card.price-card {
-    background: linear-gradient(135deg, #f0b42918, #e07b3912);
-    border: 1px solid #f0b42930;
-  }
-  .total-card.gain-card {
-    background: linear-gradient(135deg, #34d39918, #10b97712);
-    border: 1px solid #34d39930;
-  }
-  .total-card .tc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
-  .total-card .tc-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem; font-weight: 800;
-    letter-spacing: -1px;
-  }
-  .price-card .tc-value { color: var(--accent); }
-  .gain-card .tc-value { color: var(--green); }
-  .total-card .tc-sub { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+  .total-card {
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+  }
+  .total-card.price-card {
+    background: linear-gradient(135deg, #f0b42918, #e07b3912);
+    border: 1px solid #f0b42930;
+  }
+  .total-card.gain-card {
+    background: linear-gradient(135deg, #34d39918, #10b97712);
+    border: 1px solid #34d39930;
+  }
+  .total-card .tc-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+  .total-card .tc-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem; font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .price-card .tc-value { color: var(--accent); }
+  .gain-card .tc-value { color: var(--green); }
+  .total-card .tc-sub { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
-  /* API KEY notice */
-  .api-notice {
-    background: #f0b42910;
-    border: 1px solid #f0b42928;
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 0.8rem; color: var(--text-dim); line-height: 1.55;
-  }
-  .api-notice .notice-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .api-notice code {
-    background: #ffffff10; border-radius: 4px;
-    padding: 1px 6px; font-size: 0.78rem; color: var(--accent);
-  }
+  /* API KEY notice */
+  .api-notice {
+    background: #f0b42910;
+    border: 1px solid #f0b42928;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.8rem; color: var(--text-dim); line-height: 1.55;
+  }
+  .api-notice .notice-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .api-notice code {
+    background: #ffffff10; border-radius: 4px;
+    padding: 1px 6px; font-size: 0.78rem; color: var(--accent);
+  }
 
-  /* Error msg */
-  .error-msg {
-    background: #f8717115;
-    border: 1px solid #f8717128;
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 0.82rem;
-    color: var(--red);
-    margin-top: 12px;
-    display: none;
-  }
+  /* Error msg */
+  .error-msg {
+    background: #f8717115;
+    border: 1px solid #f8717128;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: var(--red);
+    margin-top: 12px;
+    display: none;
+  }
 
-  /* CONFIG TOGGLE */
-  .config-toggle {
-    display: flex; align-items: center; justify-content: space-between;
-    cursor: pointer;
-    padding: 10px 0;
-    user-select: none;
-  }
-  .config-toggle span { font-size: 0.78rem; color: var(--muted); }
-  .config-toggle .arrow { transition: transform 0.3s; font-size: 12px; color: var(--muted); }
-  .config-toggle.open .arrow { transform: rotate(180deg); }
-  .config-body { display: none; padding-top: 10px; }
-  .config-body.open { display: block; }
-  .config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  @media (max-width: 480px) { .config-grid { grid-template-columns: 1fr; } }
+  /* CONFIG TOGGLE */
+  .config-toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 0;
+    user-select: none;
+  }
+  .config-toggle span { font-size: 0.78rem; color: var(--muted); }
+  .config-toggle .arrow { transition: transform 0.3s; font-size: 12px; color: var(--muted); }
+  .config-toggle.open .arrow { transform: rotate(180deg); }
+  .config-body { display: none; padding-top: 10px; }
+  .config-body.open { display: block; }
+  .config-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 480px) { .config-grid { grid-template-columns: 1fr; } }
 
-  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
-  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
-  .scrollbar-thin::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 2px; }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 2px; }
 
-  /* Divider */
-  .divider { height: 1px; background: var(--border); margin: 16px 0; }
+  /* Divider */
+  .divider { height: 1px; background: var(--border); margin: 16px 0; }
 
-  /* Tooltip-like sub */
-  .field-hint { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+  /* Tooltip-like sub */
+  .field-hint { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
 
-  /* Field tag badge */
-  .field-tag {
-    display: inline-block;
-    font-size: 0.62rem; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 20px;
-    background: #f8717120; color: var(--red);
-    border: 1px solid #f8717130;
-    margin-left: 8px; vertical-align: middle;
-  }
-  .field-tag-green {
-    background: #34d39918; color: var(--green);
-    border-color: #34d39930;
-  }
+  /* Field tag badge */
+  .field-tag {
+    display: inline-block;
+    font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 20px;
+    background: #f8717120; color: var(--red);
+    border: 1px solid #f8717130;
+    margin-left: 8px; vertical-align: middle;
+  }
+  .field-tag-green {
+    background: #34d39918; color: var(--green);
+    border-color: #34d39930;
+  }
 
-  /* Tramo arrow */
-  .tramo-arrow {
-    text-align: center; color: var(--muted);
-    font-size: 1.1rem; margin: -4px 0 2px;
-    letter-spacing: 2px;
-  }
+  /* Tramo arrow */
+  .tramo-arrow {
+    text-align: center; color: var(--muted);
+    font-size: 1.1rem; margin: -4px 0 2px;
+    letter-spacing: 2px;
+  }
 
-  /* Tramo nota */
-  .tramo-nota {
-    background: #34d39908;
-    border: 1px solid #34d39920;
-    border-radius: var(--radius-sm);
-    padding: 9px 13px;
-    font-size: 0.76rem; color: var(--text-dim);
-    margin-top: 6px;
-  }
+  /* Tramo nota */
+  .tramo-nota {
+    background: #34d39908;
+    border: 1px solid #34d39920;
+    border-radius: var(--radius-sm);
+    padding: 9px 13px;
+    font-size: 0.76rem; color: var(--text-dim);
+    margin-top: 6px;
+  }
 
-  /* Route info — 3 col on desktop, 2 on mobile */
-  .route-info {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  @media (max-width: 700px) {
-    .route-info { grid-template-columns: repeat(2, 1fr); }
-  }
+  /* Route info — 3 col on desktop, 2 on mobile */
+  .route-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 700px) {
+    .route-info { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
 
 <div class="app-wrap">
 
-  <header>
-    <div class="logo-group">
-      <div class="logo-icon">🚗</div>
-      <div class="logo-text">
-        <h1>FGS Traslados</h1>
-        <span>Calculadora de Presupuestos</span>
-      </div>
-    </div>
-    <div class="header-badge">Ford Territory 1.5T &nbsp;·&nbsp; <strong>v2.0</strong></div>
-  </header>
+  <header>
+    <div class="logo-group">
+      <div class="logo-icon">🚗</div>
+      <div class="logo-text">
+        <h1>FGS Traslados</h1>
+        <span>Calculadora de Presupuestos</span>
+      </div>
+    </div>
+    <div class="header-badge">Ford Territory 1.5T &nbsp;·&nbsp; <strong>v2.0</strong></div>
+  </header>
 
-    <div class="api-notice" id="maps-status" style="display:none; background:#f8717112; border-color:#f8717128;">
-    <span class="notice-icon">⚠️</span>
-    <div></div>
-  </div>
+  <!-- Maps error status — oculto por defecto -->
+  <div class="api-notice" id="maps-status" style="display:none; background:#f8717112; border-color:#f8717128;">
+    <span class="notice-icon">⚠️</span>
+    <div></div>
+  </div>
 
-  <div class="grid">
+  <div class="grid">
 
-        <div class="card">
-      <div class="card-header">
-        <div class="card-header-icon">📍</div>
-        <div>
-          <h2>Datos del Viaje</h2>
-          <p>Origen, destino y tipo de ruta</p>
-        </div>
-      </div>
+    <!-- ===================== INPUTS CARD ===================== -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">📍</div>
+        <div>
+          <h2>Datos del Viaje</h2>
+          <p>Origen, destino y tipo de ruta</p>
+        </div>
+      </div>
 
-      <div class="section-label">Ruta</div>
+      <div class="section-label">Ruta</div>
 
-            <div class="field">
-        <label>
-          🏠 Base (salida del vehículo)
-          <span class="field-tag field-tag-green">Se cobra</span>
-        </label>
-        <input type="text" id="base" placeholder="Ej: Morón, Buenos Aires" autocomplete="off" />
-        <p class="field-hint">El precio incluye Base→Destino (ida) + Destino→Base (vuelta)</p>
-      </div>
+      <!-- Tramo BASE → ORIGEN (costo interno, no se cobra) -->
+      <div class="field">
+        <label>
+          🏠 Base (salida del vehículo)
+          <span class="field-tag field-tag-green">Se cobra</span>
+        </label>
+        <input type="text" id="base" placeholder="Ej: Morón, Buenos Aires" autocomplete="off" />
+        <p class="field-hint">El precio incluye Base→Destino (ida) + Destino→Base (vuelta)</p>
+      </div>
 
-            <div class="tramo-arrow">↓</div>
+      <!-- Tramo ORIGEN → DESTINO (lo que paga el cliente) -->
+      <div class="tramo-arrow">↓</div>
 
-      <div class="field">
-        <label>
-          📍 Origen del pasajero
-          <span class="field-tag field-tag-green">Se cobra</span>
-        </label>
-        <input type="text" id="origin" placeholder="Ej: Palermo, CABA" autocomplete="off" />
-      </div>
+      <div class="field">
+        <label>
+          📍 Origen del pasajero
+          <span class="field-tag field-tag-green">Se cobra</span>
+        </label>
+        <input type="text" id="origin" placeholder="Ej: Palermo, CABA" autocomplete="off" />
+      </div>
 
-      <div class="tramo-arrow">↓</div>
+      <div class="tramo-arrow">↓</div>
 
-      <div class="field">
-        <label>
-          🏁 Destino del pasajero
-          <span class="field-tag field-tag-green">Se cobra</span>
-        </label>
-        <input type="text" id="destination" placeholder="Ej: Aeropuerto de Ezeiza" autocomplete="off" />
-      </div>
+      <div class="field">
+        <label>
+          🏁 Destino del pasajero
+          <span class="field-tag field-tag-green">Se cobra</span>
+        </label>
+        <input type="text" id="destination" placeholder="Ej: Aeropuerto de Ezeiza" autocomplete="off" />
+      </div>
 
-      <div class="tramo-nota">
-        ✅ Vuelta a base incluida en el precio al cliente — todo el recorrido se cobra
-      </div>
+      <div class="tramo-nota">
+        ✅ Vuelta a base incluida en el precio al cliente — todo el recorrido se cobra
+      </div>
 
-      <div class="section-label">Tipo de ruta <span style="opacity:0.7;font-size:0.75rem">(afecta el costo de nafta)</span></div>
-      <div class="route-selector">
-        <button class="route-btn" data-mode="city" onclick="setRouteMode('city')">🏙️ Ciudad<br><small>12.5 L/100</small></button>
-        <button class="route-btn active" data-mode="mixed" onclick="setRouteMode('mixed')">🔀 Mixto<br><small>9.5 L/100</small></button>
-        <button class="route-btn" data-mode="highway" onclick="setRouteMode('highway')">🛣️ Ruta<br><small>7.0 L/100</small></button>
-      </div>
+      <div class="section-label">Tipo de ruta <span style="opacity:0.7;font-size:0.75rem">(afecta el costo de nafta)</span></div>
+      <div class="route-selector">
+        <button class="route-btn" data-mode="city" onclick="setRouteMode('city')">🏙️ Ciudad<br><small>12.5 L/100</small></button>
+        <button class="route-btn active" data-mode="mixed" onclick="setRouteMode('mixed')">🔀 Mixto<br><small>9.5 L/100</small></button>
+        <button class="route-btn" data-mode="highway" onclick="setRouteMode('highway')">🛣️ Ruta<br><small>7.0 L/100</small></button>
+      </div>
 
-      <div class="divider"></div>
-      <div class="section-label">Peajes estimados</div>
-      <div class="field">
-        <label>Costo de peajes (ida y vuelta)</label>
-        <input type="number" id="tolls" placeholder="0" min="0" step="100" />
-        <p class="field-hint">Ingresá el total de peajes del recorrido completo en $ARS</p>
-      </div>
+      <div class="divider"></div>
+      <div class="section-label">Peajes estimados</div>
+      <div class="field">
+        <label>Costo de peajes (ida y vuelta)</label>
+        <input type="number" id="tolls" placeholder="0" min="0" step="100" />
+        <p class="field-hint">Ingresá el total de peajes del recorrido completo en $ARS</p>
+      </div>
 
-      <div class="divider"></div>
-      <div class="section-label">Ingreso manual (sin Google Maps)</div>
-      <div class="field">
-        <label>KM Base → Origen (manual)</label>
-        <input type="number" id="manual-km-leg1" placeholder="Ej: 8" min="0" step="0.5" />
-      </div>
-      <div class="field">
-        <label>KM Origen → Destino (manual)</label>
-        <input type="number" id="manual-km" placeholder="Ej: 40" min="0" step="0.5" />
-      </div>
-      <div class="field">
-        <label>KM Destino → Base (manual)</label>
-        <input type="number" id="manual-km-base" placeholder="Ej: 42" min="0" step="0.5" />
-        <p class="field-hint">Los 3 tramos se suman al precio del cliente</p>
-      </div>
-      <div class="field">
-        <label>⛽ KM totales para nafta <span style="opacity:0.6;font-weight:400">(ida + vuelta a casa)</span></label>
-        <input type="number" id="manual-km-nafta" placeholder="Ej: 56 (por defecto: igual a km cobrados)" min="0" step="0.5" />
-        <p class="field-hint">Si lo dejás vacío se usan los mismos km cobrados (ya incluyen la vuelta a base).</p>
-      </div>
-      <div class="field">
-        <label>Tiempo estimado (manual)</label>
-        <input type="text" id="manual-time" placeholder="Ej: 1 hora 20 min" />
-      </div>
+      <div class="divider"></div>
+      <div class="section-label">Ingreso manual (sin Google Maps)</div>
+      <div class="field">
+        <label>KM Base → Origen (manual)</label>
+        <input type="number" id="manual-km-leg1" placeholder="Ej: 8" min="0" step="0.5" />
+      </div>
+      <div class="field">
+        <label>KM Origen → Destino (manual)</label>
+        <input type="number" id="manual-km" placeholder="Ej: 40" min="0" step="0.5" />
+      </div>
+      <div class="field">
+        <label>KM Destino → Base (manual)</label>
+        <input type="number" id="manual-km-base" placeholder="Ej: 42" min="0" step="0.5" />
+        <p class="field-hint">Los 3 tramos se suman al precio del cliente</p>
+      </div>
+      <div class="field">
+        <label>⛽ KM totales para nafta <span style="opacity:0.6;font-weight:400">(ida + vuelta a casa)</span></label>
+        <input type="number" id="manual-km-nafta" placeholder="Ej: 56 (por defecto: igual a km cobrados)" min="0" step="0.5" />
+        <p class="field-hint">Si lo dejás vacío se usan los mismos km cobrados (ya incluyen la vuelta a base).</p>
+      </div>
+      <div class="field">
+        <label>Tiempo estimado (manual)</label>
+        <input type="text" id="manual-time" placeholder="Ej: 1 hora 20 min" />
+      </div>
 
-    </div>
+    </div>
 
-        <div class="card">
-      <div class="card-header">
-        <div class="card-header-icon">⚙️</div>
-        <div>
-          <h2>Recargos y Adicionales</h2>
-          <p>Seleccioná los extras que aplican</p>
-        </div>
-      </div>
+    <!-- ===================== EXTRAS CARD ===================== -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">⚙️</div>
+        <div>
+          <h2>Recargos y Adicionales</h2>
+          <p>Seleccioná los extras que aplican</p>
+        </div>
+      </div>
 
-      <div class="section-label">Adicionales del viaje</div>
-      <div class="extras-grid">
+      <div class="section-label">Adicionales del viaje</div>
+      <div class="extras-grid">
 
-                <label class="check-item">
-          <input type="checkbox" id="chk-night" />
-          <div class="check-info">
-            <div class="check-title">🌙 Recargo Nocturno</div>
-            <div class="check-sub">22:00 a 06:00 hs — +10% sobre precio base</div>
-          </div>
-        </label>
+        <!-- NOCTURNO -->
+        <label class="check-item">
+          <input type="checkbox" id="chk-night" />
+          <div class="check-info">
+            <div class="check-title">🌙 Recargo Nocturno</div>
+            <div class="check-sub">22:00 a 06:00 hs — +10% sobre precio base</div>
+          </div>
+        </label>
 
-                <label class="check-item">
-          <input type="checkbox" id="chk-sunday" />
-          <div class="check-info">
-            <div class="check-title">📅 Domingo</div>
-            <div class="check-sub">+10% sobre precio base</div>
-          </div>
-        </label>
+        <!-- DOMINGO -->
+        <label class="check-item">
+          <input type="checkbox" id="chk-sunday" />
+          <div class="check-info">
+            <div class="check-title">📅 Domingo</div>
+            <div class="check-sub">+10% sobre precio base</div>
+          </div>
+        </label>
 
-                <label class="check-item">
-          <input type="checkbox" id="chk-holiday" />
-          <div class="check-info">
-            <div class="check-title">🎉 Feriado Nacional</div>
-            <div class="check-sub">+15% sobre precio base</div>
-          </div>
-        </label>
+        <!-- FERIADO -->
+        <label class="check-item">
+          <input type="checkbox" id="chk-holiday" />
+          <div class="check-info">
+            <div class="check-title">🎉 Feriado Nacional</div>
+            <div class="check-sub">+15% sobre precio base</div>
+          </div>
+        </label>
 
-                <label class="check-item">
-          <input type="checkbox" id="chk-wait" />
-          <div class="check-info">
-            <div class="check-title">⏳ Tiempo de Espera</div>
-            <div class="check-sub">$16.000/hora — primeros 15 min gratis</div>
-            <div class="check-sub-input">
-              <label>Tiempo de espera (en minutos)</label>
-              <input type="number" id="wait-minutes" placeholder="Ej: 45" min="0" step="5" />
-            </div>
-          </div>
-        </label>
+        <!-- ESPERA -->
+        <label class="check-item">
+          <input type="checkbox" id="chk-wait" />
+          <div class="check-info">
+            <div class="check-title">⏳ Tiempo de Espera</div>
+            <div class="check-sub">$16.000/hora — primeros 15 min gratis</div>
+            <div class="check-sub-input">
+              <label>Tiempo de espera (en minutos)</label>
+              <input type="number" id="wait-minutes" placeholder="Ej: 45" min="0" step="5" />
+            </div>
+          </div>
+        </label>
 
-      </div>
+      </div>
 
-      <div class="divider"></div>
+      <div class="divider"></div>
 
-            <div class="config-toggle" onclick="toggleConfig(this)">
-        <span>⚙️ &nbsp;Ajustar parámetros del vehículo</span>
-        <span class="arrow">▼</span>
-      </div>
-      <div class="config-body">
-        <div class="config-grid">
-          <div class="field">
-            <label>Tarifa ($/km)</label>
-            <input type="number" id="cfg-tarifa-km" value="1350" step="50" />
-          </div>
-          <div class="field">
-            <label>Costo Fijo ($/viaje)</label>
-            <input type="number" id="cfg-costo-fijo" value="9400" step="100" />
-          </div>
-          <div class="field">
-            <label>⛽ Infinia YPF ($/litro)</label>
-            <input type="number" id="cfg-fuel-price" value="2050" step="10" />
-          </div>
-          <div class="field">
-            <label>Espera ($/hora)</label>
-            <input type="number" id="cfg-wait-rate" value="16000" step="500" />
-          </div>
-          <div class="field">
-            <label>% Recargo nocturno</label>
-            <input type="number" id="cfg-night-pct" value="10" step="1" />
-          </div>
-          <div class="field">
-            <label>% Recargo domingo</label>
-            <input type="number" id="cfg-sunday-pct" value="10" step="1" />
-          </div>
-          <div class="field">
-            <label>% Recargo feriado</label>
-            <input type="number" id="cfg-holiday-pct" value="15" step="1" />
-          </div>
-          <div class="field">
-            <label>Espera gratis (min)</label>
-            <input type="number" id="cfg-free-wait" value="15" step="5" />
-          </div>
-        </div>
-      </div>
+      <!-- CONFIG AVANZADA -->
+      <div class="config-toggle" onclick="toggleConfig(this)">
+        <span>⚙️ &nbsp;Ajustar parámetros del vehículo</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="config-body">
+        <div class="config-grid">
+          <div class="field">
+            <label>Tarifa ($/km)</label>
+            <input type="number" id="cfg-tarifa-km" value="1350" step="50" />
+          </div>
+          <div class="field">
+            <label>Costo Fijo ($/viaje)</label>
+            <input type="number" id="cfg-costo-fijo" value="9400" step="100" />
+          </div>
+          <div class="field">
+            <label>⛽ Infinia YPF ($/litro)</label>
+            <input type="number" id="cfg-fuel-price" value="2050" step="10" />
+          </div>
+          <div class="field">
+            <label>Espera ($/hora)</label>
+            <input type="number" id="cfg-wait-rate" value="16000" step="500" />
+          </div>
+          <div class="field">
+            <label>% Recargo nocturno</label>
+            <input type="number" id="cfg-night-pct" value="10" step="1" />
+          </div>
+          <div class="field">
+            <label>% Recargo domingo</label>
+            <input type="number" id="cfg-sunday-pct" value="10" step="1" />
+          </div>
+          <div class="field">
+            <label>% Recargo feriado</label>
+            <input type="number" id="cfg-holiday-pct" value="15" step="1" />
+          </div>
+          <div class="field">
+            <label>Espera gratis (min)</label>
+            <input type="number" id="cfg-free-wait" value="15" step="5" />
+          </div>
+        </div>
+      </div>
 
-      <button class="btn-calc" id="btn-calculate" onclick="calcular()">
-        Calcular Presupuesto →
-      </button>
-      <div class="loading-bar" id="loading-bar"></div>
-      <div class="error-msg" id="error-msg"></div>
-    </div>
+      <button class="btn-calc" id="btn-calculate" onclick="calcular()">
+        Calcular Presupuesto →
+      </button>
+      <div class="loading-bar" id="loading-bar"></div>
+      <div class="error-msg" id="error-msg"></div>
+    </div>
 
-        <div class="results-panel card" id="results-panel">
-      <div class="card-header">
-        <div class="card-header-icon">📊</div>
-        <div>
-          <h2>Resultado del Presupuesto</h2>
-          <p id="route-label-header">—</p>
-        </div>
-      </div>
+    <!-- ===================== RESULTS PANEL ===================== -->
+    <div class="results-panel card" id="results-panel">
+      <div class="card-header">
+        <div class="card-header-icon">📊</div>
+        <div>
+          <h2>Resultado del Presupuesto</h2>
+          <p id="route-label-header">—</p>
+        </div>
+      </div>
 
-            <div class="route-info">
-        <div class="route-stat">
-          <div class="rs-label">🏠→📍 Base→Origen</div>
-          <div class="rs-value" id="out-km-leg1">—<span class="rs-unit">km</span></div>
-        </div>
-        <div class="route-stat">
-          <div class="rs-label">📍→🏁 Origen→Destino</div>
-          <div class="rs-value" id="out-km-leg2">—<span class="rs-unit">km</span></div>
-        </div>
-        <div class="route-stat">
-          <div class="rs-label">🏁→🏠 Destino→Base</div>
-          <div class="rs-value" id="out-km-leg3">—<span class="rs-unit">km</span></div>
-        </div>
-        <div class="route-stat">
-          <div class="rs-label">KM total cobrado</div>
-          <div class="rs-value" id="out-km-total">—<span class="rs-unit">km</span></div>
-        </div>
-        <div class="route-stat">
-          <div class="rs-label">Tiempo del pasajero</div>
-          <div class="rs-value" id="out-time">—</div>
-        </div>
-        <div class="route-stat">
-          <div class="rs-label">Consumo usado</div>
-          <div class="rs-value" id="out-consumption">—<span class="rs-unit">L/100</span></div>
-        </div>
-      </div>
+      <!-- Route stats — 3 tramos + total -->
+      <div class="route-info">
+        <div class="route-stat">
+          <div class="rs-label">🏠→📍 Base→Origen</div>
+          <div class="rs-value" id="out-km-leg1">—<span class="rs-unit">km</span></div>
+        </div>
+        <div class="route-stat">
+          <div class="rs-label">📍→🏁 Origen→Destino</div>
+          <div class="rs-value" id="out-km-leg2">—<span class="rs-unit">km</span></div>
+        </div>
+        <div class="route-stat">
+          <div class="rs-label">🏁→🏠 Destino→Base</div>
+          <div class="rs-value" id="out-km-leg3">—<span class="rs-unit">km</span></div>
+        </div>
+        <div class="route-stat">
+          <div class="rs-label">KM total cobrado</div>
+          <div class="rs-value" id="out-km-total">—<span class="rs-unit">km</span></div>
+        </div>
+        <div class="route-stat">
+          <div class="rs-label">Tiempo del pasajero</div>
+          <div class="rs-value" id="out-time">—</div>
+        </div>
+        <div class="route-stat">
+          <div class="rs-label">Consumo usado</div>
+          <div class="rs-value" id="out-consumption">—<span class="rs-unit">L/100</span></div>
+        </div>
+      </div>
 
-            <div class="breakdown">
-        <div class="breakdown-title">💰 Lo que cobrás al cliente</div>
-                <div class="brow" id="row-leg1" style="display:none">
-          <span class="brow-label"><span class="dot" style="background:#818cf8"></span>🏠→📍 Base → Origen</span>
-          <span class="brow-val" style="font-size:0.82rem" id="out-leg1-cost">$—</span>
-        </div>
-        <div class="brow">
-          <span class="brow-label"><span class="dot dot-fuel"></span>📍→🏁 Km cobrados × tarifa</span>
-          <span class="brow-val" style="font-size:0.82rem" id="out-leg2-cost">$—</span>
-        </div>
-        <div class="brow" id="row-return-base" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>🏁→🏠 Destino → Base</span>
-          <span class="brow-val" style="color:var(--green);font-size:0.82rem" id="out-return-base-cost">$—</span>
-        </div>
-        <div class="brow" id="row-night" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>Recargo nocturno (+10%)</span>
-          <span class="brow-val neg" id="out-night">$—</span>
-        </div>
-        <div class="brow" id="row-sunday" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>Recargo domingo (+10%)</span>
-          <span class="brow-val neg" id="out-sunday">$—</span>
-        </div>
-        <div class="brow" id="row-holiday" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>Recargo feriado (+15%)</span>
-          <span class="brow-val neg" id="out-holiday">$—</span>
-        </div>
-        <div class="brow" id="row-tolls" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>Peajes (pass-through)</span>
-          <span class="brow-val" id="out-tolls">$—</span>
-        </div>
-        <div class="brow" id="row-wait" style="display:none">
-          <span class="brow-label"><span class="dot dot-extra"></span>Tiempo de espera</span>
-          <span class="brow-val neg" id="out-wait">$—</span>
-        </div>
-        <div class="divider" style="margin:4px 0"></div>
-        <div class="breakdown-title" style="margin-top:8px">🔧 Tus costos internos</div>
-        <div class="brow">
-          <span class="brow-label"><span class="dot dot-amort"></span>Costo fijo del viaje</span>
-          <span class="brow-val" id="out-amort">$—</span>
-        </div>
-        <div class="brow">
-          <span class="brow-label"><span class="dot dot-fuel"></span>Nafta <span id="out-nafta-km-label" style="opacity:0.6;font-size:0.8rem"></span></span>
-          <span class="brow-val" id="out-fuel">$—</span>
-        </div>
-        <div class="brow" style="background:#ffffff04">
-          <span class="brow-label" style="font-weight:600; color:var(--text)"><span class="dot dot-total"></span>Total Costos</span>
-          <span class="brow-val" id="out-real-cost" style="color:var(--accent2)">$—</span>
-        </div>
-      </div>
+      <!-- Breakdown -->
+      <div class="breakdown">
+        <div class="breakdown-title">💰 Lo que cobrás al cliente</div>
+        <!-- Desglose precio al cliente -->
+        <div class="brow" id="row-leg1" style="display:none">
+          <span class="brow-label"><span class="dot" style="background:#818cf8"></span>🏠→📍 Base → Origen</span>
+          <span class="brow-val" style="font-size:0.82rem" id="out-leg1-cost">$—</span>
+        </div>
+        <div class="brow">
+          <span class="brow-label"><span class="dot dot-fuel"></span>📍→🏁 Km cobrados × tarifa</span>
+          <span class="brow-val" style="font-size:0.82rem" id="out-leg2-cost">$—</span>
+        </div>
+        <div class="brow" id="row-return-base" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>🏁→🏠 Destino → Base</span>
+          <span class="brow-val" style="color:var(--green);font-size:0.82rem" id="out-return-base-cost">$—</span>
+        </div>
+        <div class="brow" id="row-night" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>Recargo nocturno (+10%)</span>
+          <span class="brow-val neg" id="out-night">$—</span>
+        </div>
+        <div class="brow" id="row-sunday" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>Recargo domingo (+10%)</span>
+          <span class="brow-val neg" id="out-sunday">$—</span>
+        </div>
+        <div class="brow" id="row-holiday" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>Recargo feriado (+15%)</span>
+          <span class="brow-val neg" id="out-holiday">$—</span>
+        </div>
+        <div class="brow" id="row-tolls" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>Peajes (pass-through)</span>
+          <span class="brow-val" id="out-tolls">$—</span>
+        </div>
+        <div class="brow" id="row-wait" style="display:none">
+          <span class="brow-label"><span class="dot dot-extra"></span>Tiempo de espera</span>
+          <span class="brow-val neg" id="out-wait">$—</span>
+        </div>
+        <div class="divider" style="margin:4px 0"></div>
+        <div class="breakdown-title" style="margin-top:8px">🔧 Tus costos internos</div>
+        <div class="brow">
+          <span class="brow-label"><span class="dot dot-amort"></span>Costo fijo del viaje</span>
+          <span class="brow-val" id="out-amort">$—</span>
+        </div>
+        <div class="brow">
+          <span class="brow-label"><span class="dot dot-fuel"></span>Nafta <span id="out-nafta-km-label" style="opacity:0.6;font-size:0.8rem"></span></span>
+          <span class="brow-val" id="out-fuel">$—</span>
+        </div>
+        <div class="brow" style="background:#ffffff04">
+          <span class="brow-label" style="font-weight:600; color:var(--text)"><span class="dot dot-total"></span>Total Costos</span>
+          <span class="brow-val" id="out-real-cost" style="color:var(--accent2)">$—</span>
+        </div>
+      </div>
 
-            <div class="totals-row">
-        <div class="total-card price-card">
-          <div class="tc-label">💰 Precio al Cliente</div>
-          <div class="tc-value" id="out-price">$—</div>
-          <div class="tc-sub" id="out-margin-info">tarifa $1.350/km</div>
-        </div>
-        <div class="total-card gain-card">
-          <div class="tc-label">📈 Ganancia Neta</div>
-          <div class="tc-value" id="out-gain">$—</div>
-          <div class="tc-sub" id="out-gain-sub">sobre costo real</div>
-        </div>
-      </div>
+      <!-- Totals -->
+      <div class="totals-row">
+        <div class="total-card price-card">
+          <div class="tc-label">💰 Precio al Cliente</div>
+          <div class="tc-value" id="out-price">$—</div>
+          <div class="tc-sub" id="out-margin-info">tarifa $1.350/km</div>
+        </div>
+        <div class="total-card gain-card">
+          <div class="tc-label">📈 Ganancia Neta</div>
+          <div class="tc-value" id="out-gain">$—</div>
+          <div class="tc-sub" id="out-gain-sub">sobre costo real</div>
+        </div>
+      </div>
 
-    </div>
-  </div>
+    </div>
+  </div>
 </div>
 
+<!-- Google Maps API -->
 <script>
-  // ============================================================
-  //  CONSTANTES PRE-CARGADAS — FGS Traslados / Ford Territory 2020
-  // ============================================================
-  const DEFAULTS = {
-    tarifaKm:    1350,   // $/km tarifa al cliente (Excel papi)
-    costoFijo:   9400,   // $ costo fijo por viaje (Excel papi)
-    fuelPrice:   2050,   // $/litro Infinia YPF CABA (marzo 2026)
-    consumCity:  12.5,   // L/100km ciudad
-    consumMixed: 9.5,    // L/100km mixto (default)
-    consumHwy:   7.0,    // L/100km ruta
-    waitRateHr:  25000,  // $/hora espera
-    freeWaitMin: 15,     // minutos de espera gratuita
-    nightPct:    10,     // % recargo nocturno
-    sundayPct:   10,     // % recargo domingo
-    holidayPct:  15,     // % recargo feriado
-  };
+  // ============================================================
+  //  CONSTANTES PRE-CARGADAS — FGS Traslados / Ford Territory 2020
+  // ============================================================
+  const DEFAULTS = {
+    tarifaKm:    1350,   // $/km tarifa al cliente (Excel papi)
+    costoFijo:   9400,   // $ costo fijo por viaje (Excel papi)
+    fuelPrice:   2050,   // $/litro Infinia YPF CABA (marzo 2026)
+    consumCity:  12.5,   // L/100km ciudad
+    consumMixed: 9.5,    // L/100km mixto (default)
+    consumHwy:   7.0,    // L/100km ruta
+    waitRateHr:  25000,  // $/hora espera
+    freeWaitMin: 15,     // minutos de espera gratuita
+    nightPct:    10,     // % recargo nocturno
+    sundayPct:   10,     // % recargo domingo
+    holidayPct:  15,     // % recargo feriado
+  };
 
-  let currentRouteMode = 'mixed';
-  let googleMapsLoaded = false;
-  let autocompleteOrigin, autocompleteDestination;
+  let currentRouteMode = 'mixed';
+  let googleMapsLoaded = false;
+  let autocompleteOrigin, autocompleteDestination;
 
-  // Coordenadas capturadas del autocomplete (más precisas que geocodificar texto)
-  let placeBase = null, placeOrigin = null, placeDest = null;
+  // Coordenadas capturadas del autocomplete (más precisas que geocodificar texto)
+  let placeBase = null, placeOrigin = null, placeDest = null;
 
-  // ============================================================
-  //  UTILS
-  // ============================================================
-  function fmt(n) {
-    return '$' + Math.round(n).toLocaleString('es-AR');
-  }
-  function getNum(id, fallback) {
-    const v = parseFloat(document.getElementById(id).value);
-    return isNaN(v) ? fallback : v;
-  }
+  // ============================================================
+  //  UTILS
+  // ============================================================
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('es-AR');
+  }
+  function getNum(id, fallback) {
+    const v = parseFloat(document.getElementById(id).value);
+    return isNaN(v) ? fallback : v;
+  }
 
-  function setRouteMode(mode) {
-    currentRouteMode = mode;
-    document.querySelectorAll('.route-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.mode === mode);
-    });
-  }
+  function setRouteMode(mode) {
+    currentRouteMode = mode;
+    document.querySelectorAll('.route-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === mode);
+    });
+  }
 
-  function toggleConfig(el) {
-    el.classList.toggle('open');
-    const body = el.nextElementSibling;
-    body.classList.toggle('open');
-  }
+  function toggleConfig(el) {
+    el.classList.toggle('open');
+    const body = el.nextElementSibling;
+    body.classList.toggle('open');
+  }
 
-  function getConsumption() {
-    switch(currentRouteMode) {
-      case 'city':    return DEFAULTS.consumCity;
-      case 'highway': return DEFAULTS.consumHwy;
-      default:        return DEFAULTS.consumMixed;
-    }
-  }
+  function getConsumption() {
+    switch(currentRouteMode) {
+      case 'city':    return DEFAULTS.consumCity;
+      case 'highway': return DEFAULTS.consumHwy;
+      default:        return DEFAULTS.consumMixed;
+    }
+  }
 
-  function showError(msg) {
-    const el = document.getElementById('error-msg');
-    el.textContent = msg;
-    el.style.display = 'block';
-    setTimeout(() => el.style.display = 'none', 5000);
-  }
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    setTimeout(() => el.style.display = 'none', 5000);
+  }
 
-  function setLoading(on) {
-    document.getElementById('loading-bar').style.display = on ? 'block' : 'none';
-    document.getElementById('btn-calculate').disabled = on;
-  }
+  function setLoading(on) {
+    document.getElementById('loading-bar').style.display = on ? 'block' : 'none';
+    document.getElementById('btn-calculate').disabled = on;
+  }
 
-  // ============================================================
-  //  MOTOR DE CÁLCULO PRINCIPAL — Modelo Excel Papi v2
-  // ============================================================
-  // kmLeg1   = BASE → ORIGEN   (traslado al pasajero, se cobra)
-  // kmLeg2   = ORIGEN → DESTINO (viaje del pasajero, se cobra)
-  // kmLeg3   = DESTINO → BASE   (regreso, se cobra)
-  // kmNafta  = km totales para nafta (ida + vuelta a casa, SOLO para costo interno)
-  //
-  // MIS COSTOS        = costoFijo + (kmNafta × consumL100/100) × precioLitro
-  // PRECIO AL CLIENTE = costos × 2.5 (= costo + 150% ganancia) + recargos + peajes + espera
-  // GANANCIA          = precio - costos  (≥150% sobre costo real)
-  function runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr) {
-    const kmBilled = kmLeg1 + kmLeg2 + kmLeg3; // km que se cobran al cliente
+  // ============================================================
+  //  MOTOR DE CÁLCULO PRINCIPAL — Modelo Excel Papi v2
+  // ============================================================
+  // kmLeg1   = BASE → ORIGEN   (traslado al pasajero, se cobra)
+  // kmLeg2   = ORIGEN → DESTINO (viaje del pasajero, se cobra)
+  // kmLeg3   = DESTINO → BASE   (regreso, se cobra)
+  // kmNafta  = km totales para nafta (ida + vuelta a casa, SOLO para costo interno)
+  //
+  // MIS COSTOS        = costoFijo + (kmNafta × consumL100/100) × precioLitro
+  // PRECIO AL CLIENTE = costos × 2.5 (= costo + 150% ganancia) + recargos + peajes + espera
+  // GANANCIA          = precio - costos  (≥150% sobre costo real)
+  function runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr) {
+    const kmBilled = kmLeg1 + kmLeg2 + kmLeg3; // km que se cobran al cliente
 
-    // Parámetros desde config
-    const tarifaKm    = getNum('cfg-tarifa-km',   DEFAULTS.tarifaKm);
-    const costoFijo   = getNum('cfg-costo-fijo',  DEFAULTS.costoFijo);
-    const fuelPrice   = getNum('cfg-fuel-price',  DEFAULTS.fuelPrice);
-    const waitRateHr  = getNum('cfg-wait-rate',   DEFAULTS.waitRateHr);
-    const freeWaitMin = getNum('cfg-free-wait',   DEFAULTS.freeWaitMin);
-    const nightPct    = getNum('cfg-night-pct',   DEFAULTS.nightPct);
-    const sundayPct   = getNum('cfg-sunday-pct',  DEFAULTS.sundayPct);
-    const holidayPct  = getNum('cfg-holiday-pct', DEFAULTS.holidayPct);
+    // Parámetros desde config
+    const tarifaKm    = getNum('cfg-tarifa-km',   DEFAULTS.tarifaKm);
+    const costoFijo   = getNum('cfg-costo-fijo',  DEFAULTS.costoFijo);
+    const fuelPrice   = getNum('cfg-fuel-price',  DEFAULTS.fuelPrice);
+    const waitRateHr  = getNum('cfg-wait-rate',   DEFAULTS.waitRateHr);
+    const freeWaitMin = getNum('cfg-free-wait',   DEFAULTS.freeWaitMin);
+    const nightPct    = getNum('cfg-night-pct',   DEFAULTS.nightPct);
+    const sundayPct   = getNum('cfg-sunday-pct',  DEFAULTS.sundayPct);
+    const holidayPct  = getNum('cfg-holiday-pct', DEFAULTS.holidayPct);
 
-    // Consumo según tipo de ruta (L/100km)
-    let consumL100;
-    switch(currentRouteMode) {
-      case 'city':    consumL100 = DEFAULTS.consumCity; break;
-      case 'highway': consumL100 = DEFAULTS.consumHwy;  break;
-      default:        consumL100 = DEFAULTS.consumMixed;
-    }
+    // Consumo según tipo de ruta (L/100km)
+    let consumL100;
+    switch(currentRouteMode) {
+      case 'city':    consumL100 = DEFAULTS.consumCity; break;
+      case 'highway': consumL100 = DEFAULTS.consumHwy;  break;
+      default:        consumL100 = DEFAULTS.consumMixed;
+    }
 
-    // KM para nafta: usa campo manual o por defecto = kmBilled
-    // (kmBilled ya incluye el regreso a base como leg3, no hay que multiplicar por 2)
-    const kmNaftaRaw = parseFloat(document.getElementById('manual-km-nafta').value);
-    const kmNafta    = (!isNaN(kmNaftaRaw) && kmNaftaRaw > 0) ? kmNaftaRaw : kmBilled;
+    // KM para nafta: usa campo manual o por defecto = kmBilled
+    // (kmBilled ya incluye el regreso a base como leg3, no hay que multiplicar por 2)
+    const kmNaftaRaw = parseFloat(document.getElementById('manual-km-nafta').value);
+    const kmNafta    = (!isNaN(kmNaftaRaw) && kmNaftaRaw > 0) ? kmNaftaRaw : kmBilled;
 
-    // 1. MIS COSTOS INTERNOS (calculados primero para derivar el precio)
-    const litersNafta = (kmNafta * consumL100) / 100;
-    const costNafta   = litersNafta * fuelPrice;
-    const costReal    = costoFijo + costNafta;
+    // 1. MIS COSTOS INTERNOS (calculados primero para derivar el precio)
+    const litersNafta = (kmNafta * consumL100) / 100;
+    const costNafta   = litersNafta * fuelPrice;
+    const costReal    = costoFijo + costNafta;
 
-    // 2. PRECIO DE SERVICIO = costo real + 150% de ganancia (2.5× el costo)
-    const TARGET_GAIN_PCT = 150;
-    const priceService    = costReal * (1 + TARGET_GAIN_PCT / 100);
-    const tarifaEfectiva  = kmBilled > 0 ? priceService / kmBilled : 0;
+    // 2. PRECIO DE SERVICIO = costo real + 150% de ganancia (2.5× el costo)
+    const TARGET_GAIN_PCT = 150;
+    const priceService    = costReal * (1 + TARGET_GAIN_PCT / 100);
+    const tarifaEfectiva  = kmBilled > 0 ? priceService / kmBilled : 0;
 
-    // 3. RECARGOS (sobre precio de servicio)
-    const nightOn   = document.getElementById('chk-night').checked;
-    const sundayOn  = document.getElementById('chk-sunday').checked;
-    const holidayOn = document.getElementById('chk-holiday').checked;
-    let surchargeNight   = nightOn   ? priceService * (nightPct   / 100) : 0;
-    let surchargeSunday  = sundayOn  ? priceService * (sundayPct  / 100) : 0;
-    let surchargeHoliday = holidayOn ? priceService * (holidayPct / 100) : 0;
+    // 3. RECARGOS (sobre precio de servicio)
+    const nightOn   = document.getElementById('chk-night').checked;
+    const sundayOn  = document.getElementById('chk-sunday').checked;
+    const holidayOn = document.getElementById('chk-holiday').checked;
+    let surchargeNight   = nightOn   ? priceService * (nightPct   / 100) : 0;
+    let surchargeSunday  = sundayOn  ? priceService * (sundayPct  / 100) : 0;
+    let surchargeHoliday = holidayOn ? priceService * (holidayPct / 100) : 0;
 
-    // 4. PEAJES (pass-through: cliente los paga, no es ganancia ni costo nuestro)
-    const tollsRaw  = document.getElementById('tolls').value;
-    const costTolls = (tollsRaw === '' || isNaN(parseFloat(tollsRaw))) ? 0 : parseFloat(tollsRaw);
+    // 4. PEAJES (pass-through: cliente los paga, no es ganancia ni costo nuestro)
+    const tollsRaw  = document.getElementById('tolls').value;
+    const costTolls = (tollsRaw === '' || isNaN(parseFloat(tollsRaw))) ? 0 : parseFloat(tollsRaw);
 
-    // 5. TIEMPO DE ESPERA
-    let costWait = 0;
-    if (document.getElementById('chk-wait').checked) {
-      const waitMin     = getNum('wait-minutes', 0);
-      const billableMin = Math.max(0, waitMin - freeWaitMin);
-      costWait = (billableMin / 60) * waitRateHr;
-    }
+    // 5. TIEMPO DE ESPERA
+    let costWait = 0;
+    if (document.getElementById('chk-wait').checked) {
+      const waitMin     = getNum('wait-minutes', 0);
+      const billableMin = Math.max(0, waitMin - freeWaitMin);
+      costWait = (billableMin / 60) * waitRateHr;
+    }
 
-    // 6. TOTAL AL CLIENTE
-    const priceClient = priceService + surchargeNight + surchargeSunday + surchargeHoliday + costTolls + costWait;
-    // Nota: peajes son pass-through, no entran en "mis costos"
+    // 6. TOTAL AL CLIENTE
+    const priceClient = priceService + surchargeNight + surchargeSunday + surchargeHoliday + costTolls + costWait;
+    // Nota: peajes son pass-through, no entran en "mis costos"
 
-    // 7. GANANCIA NETA (siempre ≥150% sobre costo real base, más recargos y espera)
-    const gainNet = priceClient - costReal;
-    const gainPct = costReal > 0 ? Math.round(gainNet / costReal * 100) : 0;
+    // 7. GANANCIA NETA (siempre ≥150% sobre costo real base, más recargos y espera)
+    const gainNet = priceClient - costReal;
+    const gainPct = costReal > 0 ? Math.round(gainNet / costReal * 100) : 0;
 
-    // ---- RENDER ----
-    const baseVal = document.getElementById('base').value || '—';
-    const origin  = document.getElementById('origin').value || '—';
-    const dest    = document.getElementById('destination').value || '—';
+    // ---- RENDER ----
+    const baseVal = document.getElementById('base').value || '—';
+    const origin  = document.getElementById('origin').value || '—';
+    const dest    = document.getElementById('destination').value || '—';
 
-    let routeLabel = '';
-    if (baseVal !== '—') routeLabel = `${baseVal} → `;
-    routeLabel += (origin !== '—' && dest !== '—') ? `${origin} → ${dest}` : 'Viaje calculado';
-    document.getElementById('route-label-header').textContent = routeLabel;
+    let routeLabel = '';
+    if (baseVal !== '—') routeLabel = `${baseVal} → `;
+    routeLabel += (origin !== '—' && dest !== '—') ? `${origin} → ${dest}` : 'Viaje calculado';
+    document.getElementById('route-label-header').textContent = routeLabel;
 
-    const fmtKm = v => `${v.toLocaleString('es-AR', {maximumFractionDigits:1})}<span class="rs-unit">km</span>`;
-    document.getElementById('out-km-leg1').innerHTML  = fmtKm(kmLeg1);
-    document.getElementById('out-km-leg2').innerHTML  = fmtKm(kmLeg2);
-    document.getElementById('out-km-leg3').innerHTML  = fmtKm(kmLeg3);
-    document.getElementById('out-km-total').innerHTML = fmtKm(kmBilled);
-    document.getElementById('out-time').textContent   = timeStr || '—';
-    document.getElementById('out-consumption').innerHTML = `${consumL100}<span class="rs-unit">L/100</span>`;
+    const fmtKm = v => `${v.toLocaleString('es-AR', {maximumFractionDigits:1})}<span class="rs-unit">km</span>`;
+    document.getElementById('out-km-leg1').innerHTML  = fmtKm(kmLeg1);
+    document.getElementById('out-km-leg2').innerHTML  = fmtKm(kmLeg2);
+    document.getElementById('out-km-leg3').innerHTML  = fmtKm(kmLeg3);
+    document.getElementById('out-km-total').innerHTML = fmtKm(kmBilled);
+    document.getElementById('out-time').textContent   = timeStr || '—';
+    document.getElementById('out-consumption').innerHTML = `${consumL100}<span class="rs-unit">L/100</span>`;
 
-    // Leg1: Base→Origen
-    const rowLeg1 = document.getElementById('row-leg1');
-    if (kmLeg1 > 0) {
-      document.getElementById('out-leg1-cost').textContent =
-        fmt(kmLeg1 * tarifaEfectiva) + ` (${kmLeg1.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
-      rowLeg1.style.display = 'flex';
-    } else {
-      rowLeg1.style.display = 'none';
-    }
+    // Leg1: Base→Origen
+    const rowLeg1 = document.getElementById('row-leg1');
+    if (kmLeg1 > 0) {
+      document.getElementById('out-leg1-cost').textContent =
+        fmt(kmLeg1 * tarifaEfectiva) + ` (${kmLeg1.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
+      rowLeg1.style.display = 'flex';
+    } else {
+      rowLeg1.style.display = 'none';
+    }
 
-    // Leg2: Origen→Destino (precio km × tarifa)
-    document.getElementById('out-leg2-cost').textContent =
-      fmt(kmLeg2 * tarifaEfectiva) + ` (${kmLeg2.toLocaleString('es-AR',{maximumFractionDigits:1})} km × $${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
+    // Leg2: Origen→Destino (precio km × tarifa)
+    document.getElementById('out-leg2-cost').textContent =
+      fmt(kmLeg2 * tarifaEfectiva) + ` (${kmLeg2.toLocaleString('es-AR',{maximumFractionDigits:1})} km × $${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
 
-    // Leg3: Destino→Base
-    const rowReturn = document.getElementById('row-return-base');
-    if (kmLeg3 > 0) {
-      document.getElementById('out-return-base-cost').textContent =
-        fmt(kmLeg3 * tarifaEfectiva) + ` (${kmLeg3.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
-      rowReturn.style.display = 'flex';
-    } else {
-      rowReturn.style.display = 'none';
-    }
+    // Leg3: Destino→Base
+    const rowReturn = document.getElementById('row-return-base');
+    if (kmLeg3 > 0) {
+      document.getElementById('out-return-base-cost').textContent =
+        fmt(kmLeg3 * tarifaEfectiva) + ` (${kmLeg3.toLocaleString('es-AR',{maximumFractionDigits:1})} km)`;
+      rowReturn.style.display = 'flex';
+    } else {
+      rowReturn.style.display = 'none';
+    }
 
-    // Recargos y extras condicionales
-    const showRow = (rowId, valId, show, amount) => {
-      document.getElementById(rowId).style.display = show ? 'flex' : 'none';
-      if (show) document.getElementById(valId).textContent = fmt(amount);
-    };
-    showRow('row-night',   'out-night',   nightOn,   surchargeNight);
-    showRow('row-sunday',  'out-sunday',  sundayOn,  surchargeSunday);
-    showRow('row-holiday', 'out-holiday', holidayOn, surchargeHoliday);
-    showRow('row-wait',    'out-wait',    document.getElementById('chk-wait').checked, costWait);
+    // Recargos y extras condicionales
+    const showRow = (rowId, valId, show, amount) => {
+      document.getElementById(rowId).style.display = show ? 'flex' : 'none';
+      if (show) document.getElementById(valId).textContent = fmt(amount);
+    };
+    showRow('row-night',   'out-night',   nightOn,   surchargeNight);
+    showRow('row-sunday',  'out-sunday',  sundayOn,  surchargeSunday);
+    showRow('row-holiday', 'out-holiday', holidayOn, surchargeHoliday);
+    showRow('row-wait',    'out-wait',    document.getElementById('chk-wait').checked, costWait);
 
-    // Peajes
-    const rowTolls = document.getElementById('row-tolls');
-    if (costTolls > 0) {
-      document.getElementById('out-tolls').textContent = fmt(costTolls);
-      rowTolls.style.display = 'flex';
-    } else {
-      rowTolls.style.display = 'none';
-    }
+    // Peajes
+    const rowTolls = document.getElementById('row-tolls');
+    if (costTolls > 0) {
+      document.getElementById('out-tolls').textContent = fmt(costTolls);
+      rowTolls.style.display = 'flex';
+    } else {
+      rowTolls.style.display = 'none';
+    }
 
-    // Costos internos
-    document.getElementById('out-amort').textContent = fmt(costoFijo);
-    document.getElementById('out-fuel').textContent  = fmt(costNafta);
-    document.getElementById('out-nafta-km-label').textContent =
-      `(${kmNafta.toLocaleString('es-AR',{maximumFractionDigits:1})} km · ${litersNafta.toFixed(1)}L · $${fuelPrice.toLocaleString('es-AR')}/L)`;
-    document.getElementById('out-real-cost').textContent = fmt(costReal);
+    // Costos internos
+    document.getElementById('out-amort').textContent = fmt(costoFijo);
+    document.getElementById('out-fuel').textContent  = fmt(costNafta);
+    document.getElementById('out-nafta-km-label').textContent =
+      `(${kmNafta.toLocaleString('es-AR',{maximumFractionDigits:1})} km · ${litersNafta.toFixed(1)}L · $${fuelPrice.toLocaleString('es-AR')}/L)`;
+    document.getElementById('out-real-cost').textContent = fmt(costReal);
 
-    // Totales
-    document.getElementById('out-price').textContent = fmt(priceClient);
-    document.getElementById('out-gain').textContent  = fmt(gainNet);
-    document.getElementById('out-margin-info').textContent = `costo + 150% ganancia ($${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
-    document.getElementById('out-gain-sub').textContent = `${gainPct}% sobre costo real`;
+    // Totales
+    document.getElementById('out-price').textContent = fmt(priceClient);
+    document.getElementById('out-gain').textContent  = fmt(gainNet);
+    document.getElementById('out-margin-info').textContent = `costo + 150% ganancia ($${Math.round(tarifaEfectiva).toLocaleString('es-AR')}/km efectivo)`;
+    document.getElementById('out-gain-sub').textContent = `${gainPct}% sobre costo real`;
 
-    // Mostrar panel
-    const panel = document.getElementById('results-panel');
-    panel.classList.add('visible');
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+    // Mostrar panel
+    const panel = document.getElementById('results-panel');
+    panel.classList.add('visible');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-  // ============================================================
-  //  FUNCIÓN PRINCIPAL — CALCULAR
-  // ============================================================
-  function calcular() {
-    document.getElementById('error-msg').style.display = 'none';
+  // ============================================================
+  //  FUNCIÓN PRINCIPAL — CALCULAR
+  // ============================================================
+  function calcular() {
+    document.getElementById('error-msg').style.display = 'none';
 
-    const manualKm     = parseFloat(document.getElementById('manual-km').value);
-    const manualKmBase = parseFloat(document.getElementById('manual-km-base').value);
-    const manualTime   = document.getElementById('manual-time').value.trim();
+    const manualKm     = parseFloat(document.getElementById('manual-km').value);
+    const manualKmBase = parseFloat(document.getElementById('manual-km-base').value);
+    const manualTime   = document.getElementById('manual-time').value.trim();
 
-    // Modo manual: los 3 tramos se ingresan individualmente
-    if (!isNaN(manualKm) && manualKm > 0) {
-      const manualKmLeg1 = parseFloat(document.getElementById('manual-km-leg1').value);
-      const kmLeg1 = (!isNaN(manualKmLeg1) && manualKmLeg1 > 0) ? manualKmLeg1 : 0;
-      const kmLeg3 = (!isNaN(manualKmBase) && manualKmBase > 0) ? manualKmBase : 0;
-      runCalc(kmLeg1, manualKm, kmLeg3, manualTime || 'No especificado');
-      return;
-    }
+    // Modo manual: los 3 tramos se ingresan individualmente
+    if (!isNaN(manualKm) && manualKm > 0) {
+      const manualKmLeg1 = parseFloat(document.getElementById('manual-km-leg1').value);
+      const kmLeg1 = (!isNaN(manualKmLeg1) && manualKmLeg1 > 0) ? manualKmLeg1 : 0;
+      const kmLeg3 = (!isNaN(manualKmBase) && manualKmBase > 0) ? manualKmBase : 0;
+      runCalc(kmLeg1, manualKm, kmLeg3, manualTime || 'No especificado');
+      return;
+    }
 
-    // Si no hay Google Maps cargado
-    if (!googleMapsLoaded) {
-      showError('⚠️ Google Maps no está activo. Ingresá las distancias en KM manualmente.');
-      return;
-    }
+    // Si no hay Google Maps cargado
+    if (!googleMapsLoaded) {
+      showError('⚠️ Google Maps no está activo. Ingresá las distancias en KM manualmente.');
+      return;
+    }
 
-    const base   = document.getElementById('base').value.trim();
-    const origin = document.getElementById('origin').value.trim();
-    const dest   = document.getElementById('destination').value.trim();
+    const base   = document.getElementById('base').value.trim();
+    const origin = document.getElementById('origin').value.trim();
+    const dest   = document.getElementById('destination').value.trim();
 
-    if (!origin || !dest) {
-      showError('Por favor ingresá al menos Origen y Destino para calcular.');
-      return;
-    }
+    if (!origin || !dest) {
+      showError('Por favor ingresá al menos Origen y Destino para calcular.');
+      return;
+    }
 
-    setLoading(true);
+    setLoading(true);
 
-    const service = new google.maps.DistanceMatrixService();
+    const service = new google.maps.DistanceMatrixService();
 
-    // Usar coordenadas exactas del autocomplete si están disponibles,
-    // o texto como fallback (Maps lo geocodifica con region=AR)
-    const locBase   = placeBase   || base;
-    const locOrigin = placeOrigin || origin;
-    const locDest   = placeDest   || dest;
+    // Usar coordenadas exactas del autocomplete si están disponibles,
+    // o texto como fallback (Maps lo geocodifica con region=AR)
+    const locBase   = placeBase   || base;
+    const locOrigin = placeOrigin || origin;
+    const locDest   = placeDest   || dest;
 
-    const matrixOptions = {
-      travelMode: google.maps.TravelMode.DRIVING,
-      language:   'es',
-      unitSystem: google.maps.UnitSystem.METRIC,
-      region:     'ar',  // fuerza geocodificación en Argentina para texto libre
-    };
+    const matrixOptions = {
+      travelMode: google.maps.TravelMode.DRIVING,
+      language:   'es',
+      unitSystem: google.maps.UnitSystem.METRIC,
+      region:     'ar',  // fuerza geocodificación en Argentina para texto libre
+    };
 
-    // 3 TRAMOS: Base→Origen + Origen→Destino + Destino→Base
-    // Todo se cobra al cliente
-    if (base) {
-      // Tres llamadas independientes para evitar ambigüedades en la matriz diagonal
-      let results = {};
-      let pending = 3;
+    // 3 TRAMOS: Base→Origen + Origen→Destino + Destino→Base
+    // Todo se cobra al cliente
+    if (base) {
+      // Tres llamadas independientes para evitar ambigüedades en la matriz diagonal
+      let results = {};
+      let pending = 3;
 
-      function onLegResult(key, el) {
-        results[key] = el;
-        pending--;
-        if (pending === 0) {
-          setLoading(false);
-          if (!results.leg1 || results.leg1.status !== 'OK') { showError('No se pudo calcular tramo Base→Origen. Verificá las direcciones.'); return; }
-          if (!results.leg2 || results.leg2.status !== 'OK') { showError('No se pudo calcular tramo Origen→Destino. Verificá las direcciones.'); return; }
-          const kmLeg1 = results.leg1.distance.value / 1000;
-          const kmLeg2 = results.leg2.distance.value / 1000;
-          const kmLeg3 = (results.leg3 && results.leg3.status === 'OK') ? results.leg3.distance.value / 1000 : 0;
-          const timeStr = results.leg2.duration.text;
-          runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr);
-        }
-      }
+      function onLegResult(key, el) {
+        results[key] = el;
+        pending--;
+        if (pending === 0) {
+          setLoading(false);
+          if (!results.leg1 || results.leg1.status !== 'OK') { showError('No se pudo calcular tramo Base→Origen. Verificá las direcciones.'); return; }
+          if (!results.leg2 || results.leg2.status !== 'OK') { showError('No se pudo calcular tramo Origen→Destino. Verificá las direcciones.'); return; }
+          const kmLeg1 = results.leg1.distance.value / 1000;
+          const kmLeg2 = results.leg2.distance.value / 1000;
+          const kmLeg3 = (results.leg3 && results.leg3.status === 'OK') ? results.leg3.distance.value / 1000 : 0;
+          const timeStr = results.leg2.duration.text;
+          runCalc(kmLeg1, kmLeg2, kmLeg3, timeStr);
+        }
+      }
 
-      // Tramo 1: Base → Origen
-      service.getDistanceMatrix({ ...matrixOptions, origins: [locBase], destinations: [locOrigin] }, (r, s) => {
-        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Base→Origen): ' + s); return; }
-        onLegResult('leg1', r.rows[0].elements[0]);
-      });
+      // Tramo 1: Base → Origen
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locBase], destinations: [locOrigin] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Base→Origen): ' + s); return; }
+        onLegResult('leg1', r.rows[0].elements[0]);
+      });
 
-      // Tramo 2: Origen → Destino
-      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
-        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Origen→Destino): ' + s); return; }
-        onLegResult('leg2', r.rows[0].elements[0]);
-      });
+      // Tramo 2: Origen → Destino
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Origen→Destino): ' + s); return; }
+        onLegResult('leg2', r.rows[0].elements[0]);
+      });
 
-      // Tramo 3: Destino → Base
-      service.getDistanceMatrix({ ...matrixOptions, origins: [locDest], destinations: [locBase] }, (r, s) => {
-        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Destino→Base): ' + s); return; }
-        onLegResult('leg3', r.rows[0].elements[0]);
-      });
+      // Tramo 3: Destino → Base
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locDest], destinations: [locBase] }, (r, s) => {
+        if (s !== 'OK') { setLoading(false); showError('Error Google Maps (Destino→Base): ' + s); return; }
+        onLegResult('leg3', r.rows[0].elements[0]);
+      });
 
-    } else {
-      // Sin base — solo Origen→Destino
-      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
-        setLoading(false);
-        if (s !== 'OK') { showError('Error Google Maps: ' + s); return; }
-        const el = r.rows[0].elements[0];
-        if (el.status !== 'OK') { showError('No se pudo calcular la ruta. Verificá las direcciones.'); return; }
-        runCalc(0, el.distance.value / 1000, 0, el.duration.text);
-      });
-    }
-  }
+    } else {
+      // Sin base — solo Origen→Destino
+      service.getDistanceMatrix({ ...matrixOptions, origins: [locOrigin], destinations: [locDest] }, (r, s) => {
+        setLoading(false);
+        if (s !== 'OK') { showError('Error Google Maps: ' + s); return; }
+        const el = r.rows[0].elements[0];
+        if (el.status !== 'OK') { showError('No se pudo calcular la ruta. Verificá las direcciones.'); return; }
+        runCalc(0, el.distance.value / 1000, 0, el.duration.text);
+      });
+    }
+  }
 
-  // ============================================================
-  //  GOOGLE MAPS INIT
-  // ============================================================
-  function initGoogleMaps() {
-    googleMapsLoaded = true;
-    document.getElementById('maps-status').style.display = 'none';
+  // ============================================================
+  //  GOOGLE MAPS INIT
+  // ============================================================
+  function initGoogleMaps() {
+    googleMapsLoaded = true;
+    document.getElementById('maps-status').style.display = 'none';
 
-    // Limpiar campos de cualquier estado de error previo
-    ['origin','destination'].forEach(id => {
-      const el = document.getElementById(id);
-      el.style.borderColor = '';
-    });
+    // Limpiar campos de cualquier estado de error previo
+    ['origin','destination'].forEach(id => {
+      const el = document.getElementById(id);
+      el.style.borderColor = '';
+    });
 
-    try {
-      // Autocomplete con geometry para capturar lat/lng exactas
-      if (google.maps.places && google.maps.places.Autocomplete) {
-        const opts = {
-          componentRestrictions: { country: 'ar' },
-          fields: ['formatted_address', 'geometry', 'name']
-        };
+    try {
+      // Autocomplete con geometry para capturar lat/lng exactas
+      if (google.maps.places && google.maps.places.Autocomplete) {
+        const opts = {
+          componentRestrictions: { country: 'ar' },
+          fields: ['formatted_address', 'geometry', 'name']
+        };
 
-        const acBase = new google.maps.places.Autocomplete(document.getElementById('base'), opts);
-        autocompleteOrigin      = new google.maps.places.Autocomplete(document.getElementById('origin'), opts);
-        autocompleteDestination = new google.maps.places.Autocomplete(document.getElementById('destination'), opts);
+        const acBase = new google.maps.places.Autocomplete(document.getElementById('base'), opts);
+        autocompleteOrigin      = new google.maps.places.Autocomplete(document.getElementById('origin'), opts);
+        autocompleteDestination = new google.maps.places.Autocomplete(document.getElementById('destination'), opts);
 
-        acBase.addListener('place_changed', () => {
-          const p = acBase.getPlace();
-          if (p && p.geometry) {
-            placeBase = p.geometry.location;
-            if (p.formatted_address) document.getElementById('base').value = p.formatted_address;
-          }
-        });
-        autocompleteOrigin.addListener('place_changed', () => {
-          const p = autocompleteOrigin.getPlace();
-          if (p && p.geometry) {
-            placeOrigin = p.geometry.location;
-            if (p.formatted_address) document.getElementById('origin').value = p.formatted_address;
-          }
-        });
-        autocompleteDestination.addListener('place_changed', () => {
-          const p = autocompleteDestination.getPlace();
-          if (p && p.geometry) {
-            placeDest = p.geometry.location;
-            if (p.formatted_address) document.getElementById('destination').value = p.formatted_address;
-          }
-        });
+        acBase.addListener('place_changed', () => {
+          const p = acBase.getPlace();
+          if (p && p.geometry) {
+            placeBase = p.geometry.location;
+            if (p.formatted_address) document.getElementById('base').value = p.formatted_address;
+          }
+        });
+        autocompleteOrigin.addListener('place_changed', () => {
+          const p = autocompleteOrigin.getPlace();
+          if (p && p.geometry) {
+            placeOrigin = p.geometry.location;
+            if (p.formatted_address) document.getElementById('origin').value = p.formatted_address;
+          }
+        });
+        autocompleteDestination.addListener('place_changed', () => {
+          const p = autocompleteDestination.getPlace();
+          if (p && p.geometry) {
+            placeDest = p.geometry.location;
+            if (p.formatted_address) document.getElementById('destination').value = p.formatted_address;
+          }
+        });
 
-        // Limpiar coordenadas si el usuario edita manualmente el campo
-        document.getElementById('base').addEventListener('input',        () => { placeBase   = null; });
-        document.getElementById('origin').addEventListener('input',      () => { placeOrigin = null; });
-        document.getElementById('destination').addEventListener('input', () => { placeDest   = null; });
-      }
-    } catch(e) {
-      console.warn('Places Autocomplete no disponible (se usará texto libre):', e);
-    }
-  }
+        // Limpiar coordenadas si el usuario edita manualmente el campo
+        document.getElementById('base').addEventListener('input',        () => { placeBase   = null; });
+        document.getElementById('origin').addEventListener('input',      () => { placeOrigin = null; });
+        document.getElementById('destination').addEventListener('input', () => { placeDest   = null; });
+      }
+    } catch(e) {
+      console.warn('Places Autocomplete no disponible (se usará texto libre):', e);
+    }
+  }
 
-  function mapsLoadError() {
-    console.warn('Google Maps no pudo cargarse.');
-    const statusEl = document.getElementById('maps-status');
-    statusEl.innerHTML = '⚠️ <strong>Google Maps no disponible.</strong> Podés usar el modo manual ingresando los km directamente.';
-    statusEl.style.display = 'flex';
-    googleMapsLoaded = false;
-  }
+  function mapsLoadError() {
+    console.warn('Google Maps no pudo cargarse.');
+    const statusEl = document.getElementById('maps-status');
+    statusEl.innerHTML = '⚠️ <strong>Google Maps no disponible.</strong> Podés usar el modo manual ingresando los km directamente.';
+    statusEl.style.display = 'flex';
+    googleMapsLoaded = false;
+  }
 
-  // Enter para calcular
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter') calcular();
-  });
+  // Enter para calcular
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') calcular();
+  });
 
-  // Toggle check-item active state y sub-inputs (cross-browser, sin :has())
-  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(chk => {
-    chk.addEventListener('change', function() {
-      const item = this.closest('.check-item');
-      item.classList.toggle('is-checked', this.checked);
-      const sub = item.querySelector('.check-sub-input');
-      if (sub) sub.style.display = this.checked ? 'block' : 'none';
-    });
-  });
+  // Toggle check-item active state y sub-inputs (cross-browser, sin :has())
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(chk => {
+    chk.addEventListener('change', function() {
+      const item = this.closest('.check-item');
+      item.classList.toggle('is-checked', this.checked);
+      const sub = item.querySelector('.check-sub-input');
+      if (sub) sub.style.display = this.checked ? 'block' : 'none';
+    });
+  });
 
-  // Timeout de seguridad: si Maps no carga en 6 segundos, mostrar aviso
-  setTimeout(() => {
-    if (!googleMapsLoaded) mapsLoadError();
-  }, 6000);
+  // Timeout de seguridad: si Maps no carga en 6 segundos, mostrar aviso
+  setTimeout(() => {
+    if (!googleMapsLoaded) mapsLoadError();
+  }, 6000);
 </script>
 
+<!-- Google Maps — Distance Matrix API + Places API -->
 <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc2KInuKbJ4WmKmFsaChkvce5DT2GQmW8&libraries=places&callback=initGoogleMaps&loading=async"
-  async defer
-  onerror="mapsLoadError()">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc2KInuKbJ4WmKmFsaChkvce5DT2GQmW8&libraries=places&callback=initGoogleMaps&loading=async"
+  async defer
+  onerror="mapsLoadError()">
 </script>
 
 </body>
 </html>
-
-```
